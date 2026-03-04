@@ -11,6 +11,23 @@ metadata:
 
 iam:
   withOIDC: true
+  serviceAccounts:
+    - metadata:
+        name: fluent-bit
+        namespace: amazon-cloudwatch
+        labels:
+          app.kubernetes.io/name: fluent-bit
+      attachPolicyARNs:
+        - arn:aws:iam::policy/CloudWatchAgentServerPolicy
+      roleName: eks-fluent-bit-role
+    - metadata:
+        name: cloudwatch-agent
+        namespace: amazon-cloudwatch
+        labels:
+          app.kubernetes.io/name: cloudwatch-agent
+      attachPolicyARNs:
+        - arn:aws:iam::policy/CloudWatchAgentServerPolicy
+      roleName: eks-cloudwatch-agent-role
 
 vpc:
   cidr: 10.0.0.0/16
@@ -74,6 +91,7 @@ cloudWatch:
       - authenticator
       - controllerManager
       - scheduler
+    logRetentionInDays: 30
 
 addons:
   - name: vpc-cni
@@ -84,3 +102,7 @@ addons:
   - name: aws-ebs-csi-driver
     wellKnownPolicies:
       ebsCSIController: true
+  - name: amazon-cloudwatch-observability
+    attachPolicyARNs:
+      - arn:aws:iam::policy/CloudWatchAgentServerPolicy
+      - arn:aws:iam::policy/AWSXrayWriteOnlyAccess
