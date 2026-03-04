@@ -1,0 +1,38 @@
+# Maven
+target/
+pom.xml.tag
+pom.releaseBackup
+pom.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+.vscode/
+
+# Spring Boot
+spring-boot-*.log
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python DB script config (contains credentials)
+scripts/db_config.ini
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+hs_err_pid*

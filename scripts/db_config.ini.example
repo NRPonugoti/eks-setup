@@ -1,0 +1,27 @@
+# Copy this file to db_config.ini and fill in your database details.
+# Never commit db_config.ini to version control (add it to .gitignore).
+#
+# For Oracle 8.x / WebLogic 8.x:
+# - Use "sid" (Oracle 8 uses SID; service_name is for Oracle 10g+).
+# - Set oracle_client_path to your Oracle Client lib dir (Thick mode required for Oracle 8.x).
+#   If WebLogic 8.x is on the same machine, you can use its Oracle client or set PATH/ORACLE_HOME
+#   and leave oracle_client_path empty.
+
+[oracle]
+host = tcenft254
+port = 1527
+# Oracle 8.x: use SID (e.g. ORCL, PROD)
+sid = oms
+# service_name = your_service_name
+
+# Required for Oracle 8.x: path to Oracle Client libraries (Thick mode).
+# Windows example: C:\oracle\ora81\bin or WebLogic's Oracle client folder
+# Leave empty if Oracle Client is on PATH / ORACLE_HOME is set
+oracle_client_path =
+
+user = PRODOMS
+password = PRODOMS
+
+# Optional: date range for the query (format: DD-MON-YY)
+date_from = 01-NOV-25
+date_to = 30-DEC-25
